@@ -1,4 +1,4 @@
-<?php ?>
+<?php $correctionGit = 'une variable non utilisée afin de mettre du code php pour qu\'il soit recconu en tant que php ' ?>
 <div class="blog-slider">
     <form action="/crud" method="post">
         <div><h1>WHAT DO YOU WANT TO DO ?</h1></div><br>

@@ -1,4 +1,4 @@
-<?php ?>
+<?php $correctionGit = 'une variable non utilisée afin de mettre du code php pour qu\'il soit recconu en tant que php ' ?>
 <div class="blog-slider">
     <div class="blog-slider__wrp swiper-wrapper">
     <div>

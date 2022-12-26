@@ -1,8 +1,9 @@
+<?php $correctionGit = 'une variable non utilisée afin de mettre du code php pour qu\'il soit recconu en tant que php ' ?>
 <div class="blog-slider">
     <div class="blog-slider__wrp swiper-wrapper">
     <div id="login">
-        <center><h2>LOGIN</h2></center>
-    <center>You don't have an account yet ? <button id="signin_bt">Signin</button> or <button id="respwd_bt">Reset password</button></center>
+        <div><h2>LOGIN</h2></div>
+    <div>You don't have an account yet ? <button id="signin_bt">Signin</button> or <button id="respwd_bt">Reset password</button></div>
         <form action="/login" method="post" >
             <label >Username</label>
             <input type="text" name="username" required>
@@ -10,7 +11,7 @@
             <input type="password" name="pwd" required>
             <button type="submit" name="login" value="login" >Submit</button>
         </form>
-        <center style="color:grey; margin-top:30px">To acces the blog service, you need to connect or create an account.<br>Also you can use these identifier : id=test; pwd=test.</center>
+        <div style="color:grey; margin-top:30px">To acces the blog service, you need to connect or create an account.<br>Also you can use these identifier : id=test; pwd=test.</div>
     </div>
     <div id="signin">
         <div><h2>SIGNIN</h2></div>
