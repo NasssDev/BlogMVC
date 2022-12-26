@@ -1,8 +1,8 @@
 <div class="blog-slider">
     <div class="blog-slider__wrp swiper-wrapper">
     <div>
-        <center><h2>Create an article</h2></center>
-        <center  style="margin:20px">You want cancel ? <a id="login_bt" style="text-decoration:none;" href="/">HOME</a></center>
+        <div><h2>Create an article</h2></div>
+        <div  style="margin:20px">You want cancel ? <a id="login_bt" style="text-decoration:none;" href="/">HOME</a></div>
             <form action="/creat" method="post" style="display:grid; gap:20px">
                 <div style="grid-row:1; " >
                 <label >Title of article</label>
