@@ -18,5 +18,6 @@
                         <button type="submit" name="delete">Delete</button>
                     </form>
 
+        </div>
     </div> 
 </div>
