@@ -1,3 +1,4 @@
+<?php ?>
 <div class="blog-slider">
     <div class="blog-slider__wrp swiper-wrapper">
     <div>

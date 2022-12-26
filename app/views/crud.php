@@ -1,3 +1,4 @@
+<?php ?>
 <div class="blog-slider">
     <form action="/crud" method="post">
         <div><h1>WHAT DO YOU WANT TO DO ?</h1></div><br>
