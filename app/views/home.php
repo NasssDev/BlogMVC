@@ -4,9 +4,10 @@
         foreach($articles as $article): 
             if($article->getStatut()){
                 ?>
+
                 <div class="blog-slider__item swiper-slide">
                     <div class="blog-slider__img">
-                        <img src="<?=$article->getIllustration()?>">
+                        <img src="<?='../upload/'.$article->getIllustration()?>">
                     </div>
                     <div class="blog-slider__content">
                         <span class="blog-slider__code"><?=$article->getPubdate()?> by @<?=$article->getAuthor()?></span>
