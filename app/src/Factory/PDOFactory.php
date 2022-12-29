@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Factorys;
+namespace App\Factory;
 
 use App\Interfaces\Database;
 

@@ -3,7 +3,7 @@
     <div class="blog-slider__wrp swiper-wrapper">
     <div id="login">
         <div><h2>LOGIN</h2></div>
-    <div>You don't have an account yet ? <button id="signin_bt">Signin</button> or <button id="respwd_bt">Reset password</button></div>
+    <div>You don't have an account yet ? <button id="signin_bt">Create</button> or you forgot pwd <button id="respwd_bt">Reset pwd</button></div>
         <form action="/login" method="post" >
             <label >Username</label>
             <input type="text" name="username" required>
@@ -14,14 +14,14 @@
         <div style="color:grey; margin-top:30px">To acces the blog service, you need to connect or create an account.<br>Also you can use these identifier : id=test; pwd=test.</div>
     </div>
     <div id="signin">
-        <div><h2>SIGNIN</h2></div>
+        <div><h2>CREATE ACCOUNT</h2></div>
     <div>You already have an account ? <button id="login_bt">Login</button></div>
         <form action="/login" method="post" >
             <label >Username</label>
             <input type="text" name="username" required>
             <label >Password</label>
             <input type="password" name="pwd" required>
-            <button type="submit" name="signin" value="signin">Submit</button>
+            <button type="submit" name="signin" value="signin">Create</button>
         </form>
         <div style="color:grey; margin-top:30px">To acces the blog service, you need to connect or create an account.<br>Also you can use these identifier : id=test; pwd=test.</div>
     </div>

@@ -3,7 +3,7 @@
 namespace App\Managers;
 
 use App\Entitys\User;
-use App\Factorys\PDOFactory;
+use App\Factory\PDOFactory;
 use App\Interfaces\Database;
 
 class UserManager extends BaseManager

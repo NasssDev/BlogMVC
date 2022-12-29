@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Factorys\PDOFactory;
+use App\Factory\PDOFactory;
 use App\Managers\ArticleManager;
 use App\Managers\CommentManager;
 use App\Managers\UserManager;

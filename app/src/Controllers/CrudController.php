@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Factorys\PDOFactory;
+use App\Factory\PDOFactory;
 use App\Managers\UserManager;
 use App\Managers\ArticleManager;
 use App\Managers\SessionManager;
@@ -37,7 +37,7 @@ class CrudController extends AbstractController
         if($logStatut){
         
             if(isset($_POST['create_bt'])) {
-                $this->render("creat.php", [], "Post an article.", $logStatut);
+                $this->render("create.php", [], "Post an article.", $logStatut);
             }
             else if(isset($_POST['read_bt'])) {
                 header('location: /read');

@@ -7,7 +7,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th colspan="4">User table</th>
+                                <th colspan="4"> Manage users </th>
                             </tr>
                             <tr>
                                 <td>id</td>
@@ -18,18 +18,20 @@
                         </thead>
                         <tbody>
                             <?php
+                            $tabRoles = array('hight','low');
+
                             foreach($users as $user):
                             ?>
                                 <tr>
                                     <td><?=$user->getId()?></td>
                                     <td><?=$user->getUsername()?></td>
-                                    <td><?=$user->getRol()?></td>
 
                                     <td><form action='/admin' method='post'>
                                             <?php if ($user->getUsername() !== 'test') {  ?>
                                             <select type='hidden' name='rol' >
-                                                <option value='low'>low</option>
-                                                <option value='hight'>hight</option>
+                                                <?php foreach($tabRoles as $eachRole): ?>
+                                                <option value='<?=$eachRole?>' <?php echo ($user->getRol() == $eachRole) ? 'selected' : '' ?> ><?=$eachRole?></option>
+                                                <?php endforeach; ?>
                                             </select> <input type='hidden' name='usernamehidden' value='<?=$user->getUsername()?>'> <input type='submit' value='OK'></form></td>
                                     <?php } else {
                                                 echo '<div style="text-align: center;">X</div>'; }
@@ -55,7 +57,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th colspan="5">Article table</th>
+                                <th colspan="5">Manage articles</th>
                             <tr>
                                 <td>id</td>
                                 <td>Title</td>
@@ -87,7 +89,7 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th colspan="7">Comment table</th>
+                                    <th colspan="7">Manage comments</th>
                                 <tr>
                                     <td>id</td>
                                     <td>->p</td>

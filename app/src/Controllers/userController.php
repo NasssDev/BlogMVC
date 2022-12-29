@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Factorys\PDOFactory;
+use App\Factory\PDOFactory;
 use App\Managers\UserManager;
 use App\Managers\SessionManager;
 use App\Routes\Route;

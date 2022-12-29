@@ -6,7 +6,7 @@ use App\Entitys\Article;
 
 class ArticleManager extends BaseManager
 {
-    public function creatArticle($username, $title, $content, $category, $illustration, $descript): void
+    public function createArticle($username, $title, $content, $category, $illustration, $descript): void
     {
         $query = $this->pdo->prepare("INSERT INTO article (author, title, content, category, illustration, descript) VALUES (:username, :title, :content, :category, :illustration, :descript) ");
         $query->bindValue('username', $username, \PDO::PARAM_STR);
@@ -98,4 +98,10 @@ class ArticleManager extends BaseManager
 
     }
 
+    public function insertFile($fileName): void
+    {
+        $query = $this->pdo->prepare("INSERT INTO upload_file (file_name) VALUES (:file_name) ");
+        $query->bindValue('file_name', $fileName, \PDO::PARAM_STR);
+        $query->execute();
+    }
 }
