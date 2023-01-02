@@ -32,14 +32,17 @@ class CreateController extends AbstractController
 
             $tabExtension = explode('.', $nameFile);
             $extension = strtolower(end($tabExtension));
+            $nameWithoutExt = $tabExtension[0];
             //Tab des extensions acceptées
             $extensions = ['jpg', 'png', 'jpeg', 'gif'];
-            //Taille max que l'on accepte
+            //Taille max acceptée
             $maxSize = 34000000;
             if(in_array($extension, $extensions) && $sizeFile <= $maxSize && $errorFile == 0){
+
                 $uniqueName = uniqid('', true);
                 //uniqid génère quelque chose comme ca : 5f586bf96dcd38.73540086
-                $illustration = $uniqueName.".".$extension;
+
+                $illustration = $nameWithoutExt.'_'.$uniqueName.".".$extension;
                 move_uploaded_file($tmpNameFile, './upload/'.$illustration);
                 $articleManager->insertFile($illustration);
             }else{
@@ -52,7 +55,8 @@ class CreateController extends AbstractController
 
         if(!$getArticle){
             $articleManager->createArticle($username, $title, $content, $category, $illustration, $descript);
-            $this->render('home.php',[]);
+            header('location: /');
+            exit;
         }else{
             echo "<script type='text/javascript'>alert('Title already use, please choose an other.'); </script>";
             $this->render('create.php',[$_POST]);

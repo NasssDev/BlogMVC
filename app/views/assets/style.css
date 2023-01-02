@@ -121,7 +121,7 @@ body {
   transition-delay: 0.5s;
 }
 .blog-slider__item.swiper-slide-active .blog-slider__content > *:nth-child(4) {
-  transition-delay: 0.6s;
+  transition-delay: 0.3s;
 }
 .blog-slider__item.swiper-slide-active .blog-slider__content > *:nth-child(5) {
   transition-delay: 0.7s;
@@ -609,4 +609,24 @@ th, td {
 
 .footer-bar {
   height: 10vh;
+}
+
+.fileUpdate {
+  background-color: orange;
+  color: white;
+  border-radius: 5px;
+  border: solid black 1px;
+  position: relative;
+  right: 1%;
+}
+
+.fileUpdate:hover {
+  background: white;
+  color: black;
+  border: 2px solid black;
+  cursor:pointer;
+}
+
+textarea {
+
 }

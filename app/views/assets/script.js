@@ -11,3 +11,19 @@ var swiper = new Swiper('.blog-slider', {
       clickable: true,
     }
   });
+
+
+
+/**/
+if (document.getElementById('inputUpload')) {
+
+    let inputFile = document.getElementById('inputUpload');
+    let spanFile = document.getElementById('oldValue');
+
+    inputFile.addEventListener("change", () => {
+        const words = inputFile.value.split('\\');
+        const nameFile = words.pop();
+        spanFile.innerHTML = nameFile;
+    });
+}
+

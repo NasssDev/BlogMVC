@@ -35,11 +35,43 @@ class UpdateController extends AbstractController
         $title = filter_input(INPUT_POST, "title");
         $content = filter_input(INPUT_POST, "content");
         $category = filter_input(INPUT_POST, "category");
-        $illustration = filter_input(INPUT_POST, "illustration");
         $descript = filter_input(INPUT_POST, "descript");
         $statut = filter_input(INPUT_POST, "statut");
         
         $articleManager = new ArticleManager(new PDOFactory());
+
+        if(isset($_FILES['illustration'])){
+
+            $tmpNameFile = $_FILES['illustration']['tmp_name'];
+            $nameFile = $_FILES['illustration']['name'];
+            $sizeFile = $_FILES['illustration']['size'];
+            $errorFile = $_FILES['illustration']['error'];
+
+            $tabExtension = explode('.', $nameFile);
+            $extension = strtolower(end($tabExtension));
+
+            // on garde le nom du fichier sans extension pour l'ajouter au nom
+            $nameWithoutExt = $tabExtension[0];
+
+            //Tab des extensions acceptées
+            $extensions = ['jpg', 'png', 'jpeg', 'gif'];
+            //Taille max acceptée
+            $maxSize = 34000000;
+            if(in_array($extension, $extensions) && $sizeFile <= $maxSize && $errorFile == 0){
+                $uniqueName = uniqid('', true);
+                //uniqid génère quelque chose comme ca : 5f586bf96dcd38.73540086
+                $illustration = $nameWithoutExt.'_'.$uniqueName.".".$extension;
+                move_uploaded_file($tmpNameFile, './upload/'.$illustration);
+                @unlink( './upload/'.$_POST['oldFile']);
+                $articleManager->insertFile($illustration);
+            }else{
+                echo "<script type='text/javascript'>alert('problem encountered verify extension and/or size file'); </script>";
+                $this->render('update.php',[$_POST]);
+            }
+        }else{
+
+            $illustration = $_POST['oldFile'];
+        }
 
         $articleManager->updateArticle($id, $username, $title, $content, $category, $illustration, $descript, $statut);
         
