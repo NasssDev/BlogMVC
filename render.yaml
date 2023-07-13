@@ -1,6 +1,22 @@
 version: 1
 services:
-  - type: docker
-    name: blogMVC
-    buildCommand: docker-compose build
-    startCommand: docker-compose up -d
+  - type: web
+    name: php
+    buildCommand: docker build -t php-app ./docker
+    startCommand: docker run -p 9606:80 -v $PWD/app:/var/www/html php-app
+
+  - type: web
+    name: db
+    image: mysql
+    env:
+      MYSQL_DATABASE: blogmvc
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./database/blogmvc.sql:/docker-entrypoint-initdb.d/blogmvc.sql
+
+  - type: web
+    name: phpmyadmin
+    image: phpmyadmin
+    env:
+      PMA_ARBITRARY: "1"
+    port: 8080
