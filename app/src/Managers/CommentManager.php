@@ -52,7 +52,7 @@ class CommentManager extends BaseManager
         $query->execute();     
         $query2 = $this->pdo->prepare("DELETE FROM comment WHERE id_parent_comment=:id ");
         $query2->bindValue('id', $id, \PDO::PARAM_INT);
-        $query2->execute();   
+        $query2->execute();
     }
 
     public function deleteCommentFromArticle( string $id): void
