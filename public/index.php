@@ -56,6 +56,6 @@ header('Content-Type: text/js');
 readfile($jsFilePath);
 
 
-echo "NO MATCH";
+// echo "NO MATCH";
 
 die;
