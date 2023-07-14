@@ -39,7 +39,7 @@ foreach ($routesObj as $route) {
         continue;
     }
     echo "<pre>";
-    var_dump($route);
+    echo ($route);
     echo "</pre>";
     $controlerClassName = $route->getController();
     $action = $route->getAction();
