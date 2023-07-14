@@ -54,7 +54,6 @@ foreach ($routesObj as $route) {
 if (!$matched) {
     $filePath = __DIR__ . $_SERVER['REQUEST_URI'];
     var_dump($filePath);
-    echo "<br/>$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$";
 
     if (is_file($filePath)) {
         $contentType = mime_content_type($filePath);
