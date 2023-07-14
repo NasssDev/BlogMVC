@@ -1,2 +1,9 @@
-app/vendor
-app/upload
+# Node
+/node_modules
+/package-lock.json
+
+# App
+/dist
+
+# Vercel
+.vercel
