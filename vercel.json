@@ -3,12 +3,13 @@
         "src": "/(.*)",
         "dest": "/api/index.php"
     }],
+    "rewrites": [
+    { "source": "/views/assets/(.*)", "destination": "/views/assets/$1" }
+  ],
   "functions": {
     "api/*.php": {
-      "runtime": "vercel-php@0.6.0",
-      "excludeFiles": "{public/views/assets/*,public/upload/*}"
-
-    }
+      "runtime": "vercel-php@0.6.0"
+        }
   }
 }
 
