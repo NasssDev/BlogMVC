@@ -21,6 +21,6 @@ class PDOFactory implements Database
 
     public function getMySqlPDO(): \PDO
     {
-        return new \PDO("mysql:host=" . $this->host . ";dbname=" . $this->dbName, $this->userName, $this->password);
+        return new \PDO("pgsql:host=" . $this->host . ";dbname=" . $this->dbName, $this->userName, $this->password);
     }
 }
