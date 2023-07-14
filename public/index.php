@@ -39,6 +39,17 @@ foreach ($routesObj as $route) {
         continue;
     }
 
+    if ($route->match('/views/assets/style.css')) {
+        $cssFilePath = __DIR__ . '/views/assets/style.css';
+        header('Content-Type: text/css');
+        readfile($cssFilePath);
+        exit();
+    } elseif ($route->match('/views/assets/index.js')) {
+        $jsFilePath = __DIR__ . '/views/assets/index.js';
+        header('Content-Type: text/js');
+        readfile($jsFilePath);
+        exit();
+    }
     $controlerClassName = $route->getController();
     $action = $route->getAction();
     $params = $route->mergeParams($url);
@@ -47,6 +58,8 @@ foreach ($routesObj as $route) {
     exit();
 }
 
-// echo "NO MATCH";
+
+
+echo "NO MATCH";
 
 die;
