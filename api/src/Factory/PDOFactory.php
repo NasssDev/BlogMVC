@@ -11,7 +11,7 @@ class PDOFactory implements Database
     private $userName;
     private $password;
 
-    public function __construct(string $host = "db", string $dbName = "blogmvc", string $userName = "root", string $password = "password")
+    public function __construct(string $host = "tbapbwul", string $dbName = "blogmvc", string $userName = "tbapbwul", string $password = "E8sDwaqH6ne_DNFaltXnGP2WxW9Wn7Nl")
     {
         $this->host = $host;
         $this->dbName = $dbName;
@@ -23,5 +23,4 @@ class PDOFactory implements Database
     {
         return new \PDO("mysql:host=" . $this->host . ";dbname=" . $this->dbName, $this->userName, $this->password);
     }
-
 }
