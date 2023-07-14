@@ -5,8 +5,8 @@
     }],
   "functions": {
     "api/*.php": {
-      "runtime": "vercel-php@0.6.0",
-      "excludeFiles": "{public/views/assets/**,public/upload/**}"
+      "runtime": "vercel-php@0.6.0"
+      // ,"excludeFiles": "{public/views/assets/**,public/upload/**}"
     }
   }
 }
