@@ -21,14 +21,14 @@ $routesObj = [];
 foreach ($controllers as $controller) {
     $reflection = new ReflectionClass($controller);
     foreach ($reflection->getMethods() as $method) {
-       foreach ($method->getAttributes() as $attribute) {
-           /** @var Route $route */
-           $route = $attribute->newInstance();
-           $route->setController($controller)
-               ->setAction($method->getName());
+        foreach ($method->getAttributes() as $attribute) {
+            /** @var Route $route */
+            $route = $attribute->newInstance();
+            $route->setController($controller)
+                ->setAction($method->getName());
 
-           $routesObj[] = $route;
-       }
+            $routesObj[] = $route;
+        }
     }
 }
 
