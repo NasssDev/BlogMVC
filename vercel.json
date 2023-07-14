@@ -1,29 +1,13 @@
 {
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/index.php"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/public/$1"
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/public/index.php"
-    }
-  ],
-  "builds": [
-    {
-      "src": "/public/(.*)",
-      "use": "@vercel/static"
-    }
-  ],
+  "routes": [{
+        "src": "/(.*)",
+        "dest": "/api/index.php"
+    }],
   "functions": {
     "api/*.php": {
-      "runtime": "vercel-php@0.6.0"
+      "runtime": "vercel-php@0.6.0",
+      "excludeFiles": "{public/views/assets/**,public/upload/**}"
     }
   }
 }
+
