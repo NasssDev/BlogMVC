@@ -2,7 +2,7 @@
   "routes": [
     {
       "src": "/public/views/assets/(.*)",
-      "dest": "/public/$1"
+      "continue": true
     },
     {
       "src": "/(.*)",
