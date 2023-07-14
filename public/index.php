@@ -31,7 +31,8 @@ foreach ($controllers as $controller) {
         }
     }
 }
-
+var_dump($routesObj);
+die;
 $url = "/" . trim(explode("?", $_SERVER['REQUEST_URI'])[0], "/");
 
 foreach ($routesObj as $route) {
@@ -47,15 +48,6 @@ foreach ($routesObj as $route) {
     exit();
 }
 
-$cssFilePath = __DIR__ . '/views/assets/style.css';
-header('Content-Type: text/css');
-readfile($cssFilePath);
-
-$jsFilePath = __DIR__ . '/views/assets/index.js';
-header('Content-Type: text/js');
-readfile($jsFilePath);
-
-
-// echo "NO MATCH";
+echo "NO MATCH";
 
 die;
