@@ -11,7 +11,7 @@ use App\Routes\Route;
 
 class ArticleController extends AbstractController
 {
-    #[Route('/', name: "homepage", methods: ["GET"])]
+    #[Route('/api', name: "homepage", methods: ["GET"])]
     public function home()
     {
         $articleManager = new ArticleManager(new PDOFactory());
@@ -20,9 +20,9 @@ class ArticleController extends AbstractController
         $sessionManager = new SessionManager();
         $logStatut = $sessionManager->check_login();
         //echo $sessionManager->getUsername();
-        if($logStatut){
+        if ($logStatut) {
             $this->render("crud.php", [], "crud page", $logStatut);
-        }else{
+        } else {
             $this->render("home.php", ["articles" => $articles], "Tous les articles", $logStatut);
         }
     }
@@ -43,5 +43,4 @@ class ArticleController extends AbstractController
         $username = $sessionManager->getSessionUsername();
         $this->render("showOne.php", ["article" => $article, "comments" => $comments, "logStatut" => $logStatut, "username" => $username], "Un article", $logStatut);
     }
-    
 }
