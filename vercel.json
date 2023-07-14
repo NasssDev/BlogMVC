@@ -1,7 +1,13 @@
 {
-    "rewrites": [
-    { "source": "/views/assets/(.*)", "destination": "/views/assets/$1" },
-    { "source": "/(.*)", "destination": "/api/index.php" }
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    },
+    {
+      "src": "/public/views/assets/(.*)",
+      "dest": "/public/$1"
+    }
   ],
   "functions": {
     "api/*.php": {
