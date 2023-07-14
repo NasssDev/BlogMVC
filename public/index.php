@@ -31,8 +31,7 @@ foreach ($controllers as $controller) {
         }
     }
 }
-var_dump($routesObj);
-die;
+
 $url = "/" . trim(explode("?", $_SERVER['REQUEST_URI'])[0], "/");
 
 foreach ($routesObj as $route) {
