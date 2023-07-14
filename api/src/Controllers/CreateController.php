@@ -10,7 +10,7 @@ use App\Routes\Route;
 class CreateController extends AbstractController
 {
 
-    #[Route('/api/create', name: "crud", methods: ["POST"])]
+    #[Route('/create', name: "crud", methods: ["POST"])]
     public function create_post()
     {
         $articleManager = new ArticleManager(new PDOFactory());

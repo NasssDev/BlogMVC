@@ -10,18 +10,17 @@ use App\Routes\Route;
 
 class CrudController extends AbstractController
 {
-    #[Route('/crud', name: "crud", methods: ["GET"])]
+    #[Route('/api/crud', name: "crud", methods: ["GET"])]
     public function crud()
     {
         $sessionManager = new SessionManager();
         $logStatut = $sessionManager->check_login();
 
-        if($logStatut){
+        if ($logStatut) {
             $this->render("crud.php", [], "CRUD page", $logStatut);
-        }else{
+        } else {
             $this->render("login.php", [], "Login page", $logStatut);
         }
-
     }
 
     #[Route('/crud', name: "crud", methods: ["POST"])]
@@ -34,26 +33,20 @@ class CrudController extends AbstractController
         $articleManager = new ArticleManager(new PDOFactory());
         $articles = $articleManager->readAllArticlesFromUser($username);
 
-        if($logStatut){
-        
-            if(isset($_POST['create_bt'])) {
+        if ($logStatut) {
+
+            if (isset($_POST['create_bt'])) {
                 $this->render("create.php", [], "Post an article.", $logStatut);
-            }
-            else if(isset($_POST['read_bt'])) {
+            } else if (isset($_POST['read_bt'])) {
                 header('location: /read');
-            }
-            else if(isset($_POST['update_bt'])) {
+            } else if (isset($_POST['update_bt'])) {
                 $this->render("update.php", ["articles" => $articles], "Update an article.", $logStatut);
-            }
-            else if(isset($_POST['delete_bt'])) {
+            } else if (isset($_POST['delete_bt'])) {
                 $this->render("delete.php", ["articles" => $articles], "Delete page.", $logStatut);
             }
-
-        }
-        else{
+        } else {
             $this->render("login.php", [], "Login page", $logStatut);
         }
-
     }
 
     #[Route('/create', name: "crud", methods: ["POST"])]
@@ -69,7 +62,7 @@ class CrudController extends AbstractController
         $category = filter_input(INPUT_POST, "category");
         $descript = filter_input(INPUT_POST, "descript");
 
-        if(isset($_FILES['illustration'])){
+        if (isset($_FILES['illustration'])) {
 
             $tmpNameFile = $_FILES['illustration']['tmp_name'];
             $nameFile = $_FILES['illustration']['name'];
@@ -82,27 +75,26 @@ class CrudController extends AbstractController
             $extensions = ['jpg', 'png', 'jpeg', 'gif'];
             //Taille max acceptée
             $maxSize = 34000000;
-            if(in_array($extension, $extensions) && $sizeFile <= $maxSize && $errorFile == 0){
+            if (in_array($extension, $extensions) && $sizeFile <= $maxSize && $errorFile == 0) {
                 $uniqueName = uniqid('', true);
                 //uniqid génère quelque chose comme ca : 5f586bf96dcd38.73540086
-                $illustration = $uniqueName.".".$extension;
-                move_uploaded_file($tmpNameFile, './upload/'.$illustration);
+                $illustration = $uniqueName . "." . $extension;
+                move_uploaded_file($tmpNameFile, './upload/' . $illustration);
                 $articleManager->insertFile($illustration);
-            }else{
+            } else {
                 echo "<script type='text/javascript'>alert('problem encountered verify extension and size file'); </script>";
-                $this->render('create.php',[$_POST]);
+                $this->render('create.php', [$_POST]);
             }
         }
 
         $getArticle = $articleManager->readOneArticleFromTitle($title);
 
-        if(!$getArticle){
+        if (!$getArticle) {
             $articleManager->createArticle($username, $title, $content, $category, $illustration, $descript);
-            $this->render('home.php',[]);
-        }else{
+            $this->render('home.php', []);
+        } else {
             echo "<script type='text/javascript'>alert('Title already use, please choose an other.'); </script>";
-            $this->render('create.php',[$_POST]);
+            $this->render('create.php', [$_POST]);
         }
     }
-
 }
