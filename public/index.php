@@ -51,18 +51,6 @@ foreach ($routesObj as $route) {
     exit();
 }
 
-// if (!$matched) {
-//     $filePath = __DIR__ . $_SERVER['REQUEST_URI'];
-
-//     if (is_file($filePath)) {
-//         $contentType = mime_content_type($filePath);
-
-//         header("Content-Type: $contentType");
-//         readfile($filePath);
-//         exit();
-//     }
-// }
-
 echo "NO MATCH";
 
 die;
