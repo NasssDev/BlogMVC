@@ -39,6 +39,10 @@ foreach ($routesObj as $route) {
         continue;
     }
 
+    if ($url === "views/assets/style.css") {
+        return;
+    }
+
     $controlerClassName = $route->getController();
     $action = $route->getAction();
     $params = $route->mergeParams($url);
