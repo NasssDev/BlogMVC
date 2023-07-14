@@ -1,8 +1,26 @@
 {
-  "routes": [{
-        "src": "/(.*)",
-        "dest": "/api/index.php"
-    }],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.php"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/public/index.php"
+    }
+  ],
+  "builds": [
+    {
+      "src": "/public/(.*)",
+      "use": "@vercel/static"
+    }
+  ],
   "functions": {
     "api/*.php": {
       "runtime": "vercel-php@0.6.0"
