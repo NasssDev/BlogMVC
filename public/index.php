@@ -1,3 +1,7 @@
+<?php
+header('Location : https://blogmvc-nasssdev.vercel.app/api');
+exit;
+?>
 <!DOCTYPE html>
 <html lang="en">
 

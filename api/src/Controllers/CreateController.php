@@ -10,7 +10,7 @@ use App\Routes\Route;
 class CreateController extends AbstractController
 {
 
-    #[Route('/create', name: "crud", methods: ["POST"])]
+    #[Route('/api/create', name: "crud", methods: ["POST"])]
     public function create_post()
     {
         $articleManager = new ArticleManager(new PDOFactory());
@@ -23,7 +23,7 @@ class CreateController extends AbstractController
         $category = filter_input(INPUT_POST, "category");
         $descript = filter_input(INPUT_POST, "descript");
 
-        if(isset($_FILES['illustration'])){
+        if (isset($_FILES['illustration'])) {
 
             $tmpNameFile = $_FILES['illustration']['tmp_name'];
             $nameFile = $_FILES['illustration']['name'];
@@ -37,29 +37,29 @@ class CreateController extends AbstractController
             $extensions = ['jpg', 'png', 'jpeg', 'gif'];
             //Taille max acceptée
             $maxSize = 34000000;
-            if(in_array($extension, $extensions) && $sizeFile <= $maxSize && $errorFile == 0){
+            if (in_array($extension, $extensions) && $sizeFile <= $maxSize && $errorFile == 0) {
 
                 $uniqueName = uniqid('', true);
                 //uniqid génère quelque chose comme ca : 5f586bf96dcd38.73540086
 
-                $illustration = $nameWithoutExt.'_'.$uniqueName.".".$extension;
-                move_uploaded_file($tmpNameFile, './upload/'.$illustration);
+                $illustration = $nameWithoutExt . '_' . $uniqueName . "." . $extension;
+                move_uploaded_file($tmpNameFile, './upload/' . $illustration);
                 $articleManager->insertFile($illustration);
-            }else{
+            } else {
                 echo "<script type='text/javascript'>alert('problem encountered verify extension and size file'); </script>";
-                $this->render('create.php',[$_POST]);
+                $this->render('create.php', [$_POST]);
             }
         }
 
         $getArticle = $articleManager->readOneArticleFromTitle($title);
 
-        if(!$getArticle){
+        if (!$getArticle) {
             $articleManager->createArticle($username, $title, $content, $category, $illustration, $descript);
             header('location: /');
             exit;
-        }else{
+        } else {
             echo "<script type='text/javascript'>alert('Title already use, please choose an other.'); </script>";
-            $this->render('create.php',[$_POST]);
+            $this->render('create.php', [$_POST]);
         }
     }
 }
