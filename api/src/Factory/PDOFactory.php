@@ -11,7 +11,7 @@ class PDOFactory implements Database
     private $userName;
     private $password;
 
-    public function __construct(string $host = "postgres://tbapbwul:***@surus.db.elephantsql.com/tbapbwul", string $dbName = "blogmvc", string $userName = "tbapbwul", string $password = "E8sDwaqH6ne_DNFaltXnGP2WxW9Wn7Nl")
+    public function __construct(string $host = "surus.db.elephantsql.com", string $dbName = "blogmvc", string $userName = "tbapbwul", string $password = "E8sDwaqH6ne_DNFaltXnGP2WxW9Wn7Nl")
     {
         $this->host = $host;
         $this->dbName = $dbName;
