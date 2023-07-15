@@ -47,11 +47,6 @@ foreach ($routesObj as $route) {
     exit();
 }
 
-if ($_SERVER['REQUEST_URI'] === "/") {
-    require_once './views/home.php';
-    exit();
-}
-
 echo "NO MATCH";
 
 die;
