@@ -38,9 +38,7 @@ foreach ($routesObj as $route) {
     if (!$route->match($url) || !in_array($_SERVER['REQUEST_METHOD'], $route->getMethods())) {
         continue;
     }
-    echo "<pre>";
-    echo ($route);
-    echo "</pre>";
+
     $controlerClassName = $route->getController();
     $action = $route->getAction();
     $params = $route->mergeParams($url);
