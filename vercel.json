@@ -1,6 +1,17 @@
 {  
   "routes": [
-    { "src": "/(.*)", "dest": "/api/index.php" }
+    {
+      "src": "/views/assets/(.*)",
+      "dest": "public/$1/$2/$3"
+    },
+    {
+      "src": "/upload/(.*)",
+      "dest": "public/$1/$2"
+    },
+    { 
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
   ],
   "functions": {
     "api/*.php": {

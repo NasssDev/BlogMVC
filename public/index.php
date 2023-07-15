@@ -34,11 +34,6 @@ foreach ($controllers as $controller) {
 
 $url = "/" . trim(explode("?", $_SERVER['REQUEST_URI'])[0], "/");
 
-if ($url === '/views/assets/style.css' || $url === '/views/assets/index.js') {
-    // Si l'URL correspond au fichier CSS, renvoyer le fichier sans exécuter le reste du code
-    return false;
-}
-
 foreach ($routesObj as $route) {
     if (!$route->match($url) || !in_array($_SERVER['REQUEST_METHOD'], $route->getMethods())) {
         continue;
