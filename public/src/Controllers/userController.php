@@ -24,7 +24,7 @@ class UserController extends AbstractController
         $sessionManager = new SessionManager();
         //$logStatut = $sessionManager->check_login();
         $sessionManager->logout();
-        header("location: /" );
+        header("location: /api");
 
         //$this->render("logout.php", [], "Logout page", $logStatut);
     }
@@ -44,30 +44,26 @@ class UserController extends AbstractController
         $resmdp = filter_input(INPUT_POST, "resmdp");
         $getUser = $userManager->readUser($username);
 
-        if($signin){
-            if($getUser){
+        if ($signin) {
+            if ($getUser) {
                 echo "<script type='text/javascript'>alert('this pseudo already use, please choice an other.'); location.href='/login'</script>";
-            }else{
+            } else {
                 $userManager->creatUser($username, $pwd_hash);
-                header("location: /login" );
+                header("location: /login");
             }
         }
-        if($login){
+        if ($login) {
             //var_dump($getUser[0]);
-            if (!password_verify($pwd, $getUser[0]->getPwd())){
+            if (!password_verify($pwd, $getUser[0]->getPwd())) {
                 echo "<script type='text/javascript'>alert('Password an username don't match.'); </script>";
-            }
-            elseif(password_verify($pwd, $getUser[0]->getPwd())){
+            } elseif (password_verify($pwd, $getUser[0]->getPwd())) {
                 $sessionManager->login($username);
-                header("location: /" );
+                header("location: /api");
             }
         }
-        if($resmdp){
-            $userManager->updatePwd($username, $pwd);
-            header("location: /login" );
-
+        if ($resmdp) {
+            // $userManager->updatePwd($username, $pwd);
+            // header("location: /login");
         }
-
     }
-
 }
