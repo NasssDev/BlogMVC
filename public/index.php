@@ -36,7 +36,7 @@ $url = "/" . trim(explode("?", $_SERVER['REQUEST_URI'])[0], "/");
 
 if ($url === '/views/assets/style.css' || $url === '/views/assets/index.js') {
     // Si l'URL correspond au fichier CSS, renvoyer le fichier sans exécuter le reste du code
-    exit();
+    return;
 }
 
 foreach ($routesObj as $route) {
