@@ -25,20 +25,19 @@ class AdminController extends AbstractController
 
         $userManager = new UserManager(new PDOFactory());
 
-        if($logStatut){
+        if ($logStatut) {
             $user = $userManager->readUser($username);
-            if($user[0]->getRol() === "hight"){
+            if ($user[0]->getRol() === "hight") {
                 $articles = $articleManager->readAllArticles();
                 $users = $userManager->readAllUser();
                 $comments = $commentManager->readAllComments();
                 $this->render("admin.php", ["users" => $users, "articles" => $articles, "comments" => $comments, "sessionUsername" => $username], "Admin page", $logStatut);
-            }else{
+            } else {
                 echo "<script type='text/javascript'>alert('To access admin space, ans try admin features (delete any comment, article and user), you need to login with test id.'); location.href='/login'</script>";
             }
-        }else{
-            header('location: /');
+        } else {
+            header('location: /api');
         }
-        
     }
 
     #[Route('/admin', name: "adminDelete", methods: ["POST"])]
@@ -61,20 +60,19 @@ class AdminController extends AbstractController
         $id_c = filter_input(INPUT_POST, "comment_id");
         $id_u_h = filter_input(INPUT_POST, "usernamehidden");
 
-        if($logStatut && $user[0]->getRol() === "hight"){
-            if($id_c){
+        if ($logStatut && $user[0]->getRol() === "hight") {
+            if ($id_c) {
                 $commentManager->deleteComment($id_c);
-            }elseif($id_a){
+            } elseif ($id_a) {
                 $articleManager->deleteArticle($id_a);
-            }elseif($id_u){
+            } elseif ($id_u) {
                 $userManager->deleteUser($id_u);
-            }elseif($id_r){
+            } elseif ($id_r) {
                 $userManager->updateRol($id_u_h, $id_r);
             }
-            header("location: /admin");        
-        }else{
-                echo "<script type='text/javascript'>alert('To access admin space, ans try admin features (delete any comment, article and user), you need to login with test id.'); location.href='/login'</script>";
-            }
+            header("location: /admin");
+        } else {
+            echo "<script type='text/javascript'>alert('To access admin space, ans try admin features (delete any comment, article and user), you need to login with test id.'); location.href='/login'</script>";
+        }
     }
-    
 }

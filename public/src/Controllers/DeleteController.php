@@ -23,10 +23,6 @@ class DeleteController extends AbstractController
         $commentManager = new CommentManager(new PDOFactory());
         $commentManager->deleteCommentFromArticle($id);
 
-        header('location: /');
-
-        
-
+        header('location: /api');
     }
-
 }

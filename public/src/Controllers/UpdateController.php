@@ -23,7 +23,6 @@ class UpdateController extends AbstractController
         $logStatut = $sessionManager->check_login();
 
         $this->render("updateOne.php", ["article" => $article, "article_id" => $id], "Update one article", $logStatut);
-        
     }
 
     #[Route('/updateOne/{id}', name: "update", methods: ["POST"])]
@@ -37,10 +36,10 @@ class UpdateController extends AbstractController
         $category = filter_input(INPUT_POST, "category");
         $descript = filter_input(INPUT_POST, "descript");
         $statut = filter_input(INPUT_POST, "statut");
-        
+
         $articleManager = new ArticleManager(new PDOFactory());
 
-        if(isset($_FILES['illustration'])){
+        if (isset($_FILES['illustration'])) {
 
             $tmpNameFile = $_FILES['illustration']['tmp_name'];
             $nameFile = $_FILES['illustration']['name'];
@@ -57,26 +56,24 @@ class UpdateController extends AbstractController
             $extensions = ['jpg', 'png', 'jpeg', 'gif'];
             //Taille max acceptée
             $maxSize = 34000000;
-            if(in_array($extension, $extensions) && $sizeFile <= $maxSize && $errorFile == 0){
+            if (in_array($extension, $extensions) && $sizeFile <= $maxSize && $errorFile == 0) {
                 $uniqueName = uniqid('', true);
                 //uniqid génère quelque chose comme ca : 5f586bf96dcd38.73540086
-                $illustration = $nameWithoutExt.'_'.$uniqueName.".".$extension;
-                move_uploaded_file($tmpNameFile, './upload/'.$illustration);
-                @unlink( './upload/'.$_POST['oldFile']);
+                $illustration = $nameWithoutExt . '_' . $uniqueName . "." . $extension;
+                move_uploaded_file($tmpNameFile, './upload/' . $illustration);
+                @unlink('./upload/' . $_POST['oldFile']);
                 $articleManager->insertFile($illustration);
-            }else{
+            } else {
                 echo "<script type='text/javascript'>alert('problem encountered verify extension and/or size file'); </script>";
-                $this->render('update.php',[$_POST]);
+                $this->render('update.php', [$_POST]);
             }
-        }else{
+        } else {
 
             $illustration = $_POST['oldFile'];
         }
 
         $articleManager->updateArticle($id, $username, $title, $content, $category, $illustration, $descript, $statut);
-        
-        header('location: /');
+
+        header('location: /api');
     }
-
-
 }

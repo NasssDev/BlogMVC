@@ -55,7 +55,7 @@ class CreateController extends AbstractController
 
         if (!$getArticle) {
             $articleManager->createArticle($username, $title, $content, $category, $illustration, $descript);
-            header('location: /');
+            header('location: /api');
             exit;
         } else {
             echo "<script type='text/javascript'>alert('Title already use, please choose an other.'); </script>";
