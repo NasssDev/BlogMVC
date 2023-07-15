@@ -48,7 +48,7 @@
             let signin = document.getElementById("signin_bt");
             let login = document.getElementById("login_bt");
             let resmdp = document.getElementById("respwd_bt");
-            document.getElementById("login").style.display = "none";
+            document.getElementById("signin").style.display = "none";
             document.getElementById("resmdp").style.display = "none";
             signin.addEventListener("click", () => {
                 document.getElementById("signin").style.display = "block";
