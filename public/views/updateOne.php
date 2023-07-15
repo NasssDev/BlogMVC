@@ -5,7 +5,7 @@
                 <h2>Update an article</h2>
             </div>
             <div style="margin:20px">You want cancel ? <a id="login_bt" style="text-decoration:none;" href="/api">HOME</a></div>
-            <form action="/updateOne/<?= $article_id ?>" method="post" style="display:grid; gap:20px" enctype="multipart/form-data">
+            <form action="/updateOne/<?= $article->getId() ?>" method="post" style="display:grid; gap:20px" enctype="multipart/form-data">
                 <div style="grid-row:2; ">
                     <label>New article title</label>
                     <input type="text" name="title" value="<?= $article->getTitle() ?>">
@@ -17,7 +17,8 @@
                 <div style="grid-row:4; grid-column:1">
 
                     <label for="inputUpload">
-                        Image <small>(jpg, png, jpeg or gif).</small><br>
+                        Image <small>(jpg, png, jpeg or gif).</small>
+                        <hr style="border-width: 0px;">
                         <input type="file" name="illustration" id="inputUpload" accept=".jpeg,.gif,.jpg,.png" hidden required>
                         <input type="hidden" name="oldFile" value="<?= $article->getIllustration() ?>">
                         <label for="inputUpload" class="fileUpdate">Parcourir... </label><span id="oldValue"><?= $article->getIllustration() ?></span>
