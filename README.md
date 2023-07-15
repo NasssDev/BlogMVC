@@ -3,6 +3,8 @@
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)]()  
 
 Blog sur une architecture MVC développé en PHP native, from scratch sauf hmtl, css (sur base d'un template adapté à ma sauce).
+
+Pour le tester : [nassdev-blogmvc.app](https://nassdev-blogmvc.vercel.app/api).
 ## Pour commencer
 
 Il se peut que vous ayez des soucis d'affichage, si c'est le cas faites la manip suivante :
