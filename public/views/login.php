@@ -33,7 +33,7 @@
             <div>
                 <h2>RESET PWD</h2>
             </div>
-            <div>Cancel ? <a href="/" style="text-decoration:none; " id="login_bt">Back</a></div>
+            <div>Cancel ? <a href="/api" style="text-decoration:none; " id="login_bt">Back</a></div>
             <form action="/login" style="margin-top:20px; " method="post">
                 <label>Username</label>
                 <input type="text" name="username" required>
