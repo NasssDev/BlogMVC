@@ -1,5 +1,5 @@
 <!-- affiche un article en entier -->
-<div class="blog-slider">
+<div class="blog-slider blog-sider-one">
     <div class="blog-slider__wrp swiper-wrapper">
         <?php
         if ($article->getStatut()) :
