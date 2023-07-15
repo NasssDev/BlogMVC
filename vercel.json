@@ -1,6 +1,5 @@
 {  
   "routes": [
-    { "src": "/public/views/assets/style.css", "headers": { "cache-control": "max-age=31536000" }, "dest": "/public/views/assets/style.css" },
     { "src": "/(.*)", "dest": "/api/index.php" }
   ],
   "functions": {
